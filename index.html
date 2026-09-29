@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BASEBALL MANAGER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- =========================
+       사용자가 수정할 영역
+       ========================= -->
+  <div id="custom-brand">
+    <!-- 로고/게임명 등을 자유롭게 넣으세요.
+         예:
+         <img src="logo.png" alt="게임 로고">
+         <h1>나만의 야구 게임</h1>
+    -->
+  </div>
+
+  <!-- 인트로 이미지: intro.png를 같은 폴더에 넣으면 자동으로 표시 -->
+  <section id="intro-screen" class="screen">
+    <div class="intro-image-wrap">
+      <img id="intro-image" src="intro.png" alt="게임 인트로 이미지">
+      <div id="intro-fallback">intro.png를 업로드하면 이 화면에 표시됩니다.</div>
+    </div>
+    <button id="start-game-btn" class="primary-btn">게임 시작</button>
+  </section>
+
+  <!-- =========================
+       게임 기본 UI
+       ========================= -->
+  <main id="game-screen" class="screen hidden">
+    <header class="topbar">
+      <div>
+        <strong id="game-title">BASEBALL MANAGER</strong>
+        <span id="user-name">PLAYER</span>
+      </div>
+      <div class="currency">
+        <span>💰 <b id="coin-value">10,000</b></span>
+        <span>💎 <b id="gem-value">100</b></span>
+      </div>
+    </header>
+
+    <nav id="main-nav" class="main-nav">
+      <button data-page="home">홈</button>
+      <button data-page="league">리그</button>
+      <button data-page="friendly">친선경기</button>
+      <button data-page="derby">홈런더비</button>
+      <button data-page="players">선수단</button>
+      <button data-page="draw">뽑기</button>
+      <button data-page="upgrade">강화</button>
+    </nav>
+
+    <section id="page-home" class="page">
+      <h2>구단 홈</h2>
+      <div class="cards">
+        <div class="card"><small>팀 오버롤</small><strong id="team-ovr">65</strong></div>
+        <div class="card"><small>현재 시즌</small><strong id="season-text">1 시즌</strong></div>
+        <div class="card"><small>리그 순위</small><strong id="rank-text">1위</strong></div>
+      </div>
+      <div class="panel">
+        <h3>최근 경기</h3>
+        <div id="recent-games">아직 경기가 없습니다.</div>
+      </div>
+    </section>
+
+    <section id="page-league" class="page hidden">
+      <h2>리그 모드</h2>
+      <p>싱글 플레이로 AI 구단들과 시즌을 진행합니다.</p>
+      <div class="panel">
+        <div id="league-table"></div>
+        <button id="play-league-btn" class="primary-btn">다음 경기 진행</button>
+      </div>
+    </section>
+
+    <section id="page-friendly" class="page hidden">
+      <h2>서버형 친선경기</h2>
+      <p>방을 만들거나 상대의 방 코드로 접속합니다.</p>
+      <div class="panel">
+        <input id="room-code-input" placeholder="방 코드">
+        <button id="create-room-btn">방 만들기</button>
+        <button id="join-room-btn">방 참가</button>
+        <div id="room-status">서버 연결 대기 중</div>
+      </div>
+      <div class="panel">
+        <h3>2D 야구장</h3>
+        <canvas id="stadium-canvas" width="900" height="520"></canvas>
+        <div id="match-controls" class="hidden">
+          <button data-action="pitch">투구</button>
+          <button data-action="swing">타격</button>
+          <button data-action="steal">도루</button>
+        </div>
+        <div id="match-log"></div>
+      </div>
+    </section>
+
+    <section id="page-derby" class="page hidden">
+      <h2>홈런더비</h2>
+      <p>제한된 타석에서 최대한 많은 홈런을 기록하세요.</p>
+      <div class="panel derby-panel">
+        <div>남은 타석: <b id="derby-pitches">10</b></div>
+        <div>홈런: <b id="derby-homers">0</b></div>
+        <div>최고 비거리: <b id="derby-distance">0m</b></div>
+        <button id="derby-swing-btn" class="primary-btn">스윙!</button>
+        <div id="derby-result"></div>
+      </div>
+    </section>
+
+    <section id="page-players" class="page hidden">
+      <h2>선수단</h2>
+      <div id="player-list" class="player-list"></div>
+    </section>
+
+    <section id="page-draw" class="page hidden">
+      <h2>선수 뽑기</h2>
+      <div class="panel">
+        <p>1회 뽑기: 1,000 코인</p>
+        <button id="draw-one-btn" class="primary-btn">1회 뽑기</button>
+        <button id="draw-ten-btn">10+1회 뽑기</button>
+        <div id="draw-result"></div>
+      </div>
+    </section>
+
+    <section id="page-upgrade" class="page hidden">
+      <h2>선수 강화</h2>
+      <div id="upgrade-list" class="player-list"></div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

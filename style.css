@@ -1,0 +1,113 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, "Noto Sans KR", sans-serif;
+  background: #10141c;
+  color: #f4f6f8;
+}
+button, input { font: inherit; }
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  background: #273142;
+  color: white;
+}
+button:hover { filter: brightness(1.12); }
+.primary-btn { background: #246bfd; }
+.hidden { display: none !important; }
+
+.screen { min-height: 100vh; }
+#intro-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 30px;
+  background: #080b10;
+}
+.intro-image-wrap {
+  width: min(100%, 1100px);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  overflow: hidden;
+}
+#intro-image {
+  display: none;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+#intro-fallback { color: #9ca6b5; }
+
+#custom-brand { position: absolute; top: 12px; left: 16px; z-index: 10; }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #171d28;
+  border-bottom: 1px solid #30394a;
+}
+.currency { display: flex; gap: 18px; }
+
+.main-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 20px;
+  background: #111722;
+}
+.main-nav button { flex: 1 1 100px; }
+
+.page { padding: 22px; max-width: 1200px; margin: auto; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.card, .panel {
+  background: #181f2b;
+  border: 1px solid #2d3748;
+  border-radius: 12px;
+  padding: 18px;
+}
+.card { display: flex; flex-direction: column; gap: 8px; }
+.card strong { font-size: 28px; }
+
+.player-list { display: grid; gap: 10px; }
+.player-card {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  background: #181f2b;
+  border: 1px solid #2d3748;
+  border-radius: 10px;
+}
+.grade {
+  min-width: 38px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 5px;
+  background: #354154;
+}
+input { padding: 10px; border-radius: 7px; border: 1px solid #4a5568; background: #111722; color: white; }
+
+#stadium-canvas {
+  width: 100%;
+  max-width: 900px;
+  background: #78a84c;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+#match-controls { margin-top: 12px; display: flex; gap: 8px; }
+#match-log, #draw-result, #derby-result { margin-top: 14px; min-height: 30px; }
+
+@media (max-width: 700px) {
+  .cards { grid-template-columns: 1fr; }
+  .player-card { grid-template-columns: 1fr 1fr; }
+}
